@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_uikit/routes/home/home_route.dart';
+import 'package:flutter_uikit/routes/about/about_route.dart';
+import 'package:flutter_uikit/routes/dashboard/dashboard_route.dart';
 
 void main() {
   runApp(App());
@@ -17,7 +18,8 @@ class App extends StatelessWidget {
         initialRoute: '/',
         // 注册命名路由表
         routes: <String, WidgetBuilder>{
-          "/": (context) => new HomeRoute(),
+          "/": (context) => new DashboardRoute(),
+          "/about": (context) => new AboutRoute(),
         });
   }
 }

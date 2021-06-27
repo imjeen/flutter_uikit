@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class SideMenu extends StatelessWidget {
-  const SideMenu({
+class Aside extends StatelessWidget {
+  const Aside({
     Key? key,
   }) : super(key: key);
 
@@ -25,27 +25,16 @@ class SideMenu extends StatelessWidget {
             DrawerListTitle(
               title: "Dashboard",
               svgSrc: "assets/icons/dashboard.svg",
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, '/');
+              },
             ),
             DrawerListTitle(
-              title: "Dashboard",
+              title: "About",
               svgSrc: "assets/icons/dashboard.svg",
-              onTap: () {},
-            ),
-            DrawerListTitle(
-              title: "Dashboard",
-              svgSrc: "assets/icons/dashboard.svg",
-              onTap: () {},
-            ),
-            DrawerListTitle(
-              title: "Dashboard",
-              svgSrc: "assets/icons/dashboard.svg",
-              onTap: () {},
-            ),
-            DrawerListTitle(
-              title: "Dashboard",
-              svgSrc: "assets/icons/dashboard.svg",
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, '/about');
+              },
             ),
           ],
         ),

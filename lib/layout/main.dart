@@ -1,27 +1,29 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_uikit/layout/aside.dart';
 
-import 'comp/side_menu.dart';
+class Layout extends StatelessWidget {
+  const Layout({
+    Key? key,
+    required this.child,
+  }) : super(key: key);
 
-class HomeRoute extends StatelessWidget {
-  const HomeRoute({Key? key}) : super(key: key);
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // default flex=1, 1/6 part
             Expanded(
-              child: SideMenu(),
+              // default flex=1, 1/6 part
+              child: Aside(),
             ),
             Expanded(
               // 5/6 part
               flex: 5,
-              child: Container(
-                color: Colors.blue,
-              ),
+              child: child,
             ),
           ],
         ),
