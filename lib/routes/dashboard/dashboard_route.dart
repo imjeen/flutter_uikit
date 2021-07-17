@@ -3,6 +3,8 @@ import 'package:flutter_uikit/constants.dart';
 import 'package:flutter_uikit/layout/main.dart';
 import 'package:flutter_uikit/routes/dashboard/comp/header.dart';
 
+import 'comp/my_field.dart';
+import 'comp/recent_file_table.dart';
 import 'comp/store_detail.dart';
 
 class DashboardRoute extends StatelessWidget {
@@ -24,9 +26,12 @@ class DashboardRoute extends StatelessWidget {
                   // 中间部分
                   Expanded(
                     flex: 5,
-                    child: Container(
-                      height: 500,
-                      color: Colors.white,
+                    child: Column(
+                      children: [
+                        MyField(),
+                        SizedBox(height: defaultPadding),
+                        RecentFileTable(),
+                      ],
                     ),
                   ),
                   SizedBox(width: defaultPadding),
