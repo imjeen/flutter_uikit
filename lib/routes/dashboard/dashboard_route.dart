@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_uikit/constants.dart';
 import 'package:flutter_uikit/layout/main.dart';
+import 'package:flutter_uikit/responsive.dart';
 import 'package:flutter_uikit/routes/dashboard/comp/header.dart';
 
 import 'comp/my_field.dart';
@@ -31,15 +32,22 @@ class DashboardRoute extends StatelessWidget {
                         MyField(),
                         SizedBox(height: defaultPadding),
                         RecentFileTable(),
+
+                        if (Responsive.isMobile(context))
+                          SizedBox(height: defaultPadding),
+                        // 右侧部分
+                        if (Responsive.isMobile(context)) StoreDetail()
                       ],
                     ),
                   ),
-                  SizedBox(width: defaultPadding),
+                  if (!Responsive.isMobile(context))
+                    SizedBox(width: defaultPadding),
                   // 右侧部分
-                  Expanded(
-                    flex: 2,
-                    child: StoreDetail(),
-                  )
+                  if (!Responsive.isMobile(context))
+                    Expanded(
+                      flex: 2,
+                      child: StoreDetail(),
+                    )
                 ],
               )
             ],

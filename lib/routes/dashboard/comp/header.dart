@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_uikit/controller/MenuController.dart';
+import 'package:flutter_uikit/responsive.dart';
 
 class Header extends StatelessWidget {
   const Header({
@@ -9,11 +12,18 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text(
-          "Dashboard",
-          style: Theme.of(context).textTheme.headline6,
-        ),
-        Spacer(),
+        if (!Responsive.isDesktop(context))
+          IconButton(
+            onPressed: context.read<MenuController>().controlMenu,
+            icon: Icon(Icons.menu),
+          ),
+        if (!Responsive.isMobile(context))
+          Text(
+            "Dashboard",
+            style: Theme.of(context).textTheme.headline6,
+          ),
+        if (!Responsive.isMobile(context))
+          Spacer(flex: Responsive.isDesktop(context) ? 2 : 1),
         Expanded(
           child: SearchField(),
         ),
@@ -47,10 +57,11 @@ class ProfileCard extends StatelessWidget {
             width: 30,
             fit: BoxFit.contain,
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text("Profile title and name"),
-          ),
+          if (!Responsive.isMobile(context))
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text("Profile title and name"),
+            ),
           Icon(Icons.keyboard_arrow_down),
         ],
       ),
