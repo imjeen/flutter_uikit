@@ -19,7 +19,7 @@ class RecentFileTable extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'recent files',
+            'Recent Files',
             style: Theme.of(context).textTheme.subtitle1,
           ),
           SizedBox(

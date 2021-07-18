@@ -26,9 +26,14 @@ class Chart extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(height: defaultPadding / 2),
-                Text('29', style: Theme.of(context).textTheme.headline4
-                    // .copyWith(color: Colors.white24),
-                    ),
+                Text(
+                  '29',
+                  style: Theme.of(context).textTheme.headline4!.copyWith(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        height: 0.5,
+                      ),
+                ),
                 Text('of 128GB')
               ],
             ),

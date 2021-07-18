@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_uikit/constants.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_uikit/controller/MenuController.dart';
+import 'package:flutter_uikit/controller/menu_controller.dart';
 import 'package:flutter_uikit/responsive.dart';
 
 class Header extends StatelessWidget {
@@ -22,8 +24,7 @@ class Header extends StatelessWidget {
             "Dashboard",
             style: Theme.of(context).textTheme.headline6,
           ),
-        if (!Responsive.isMobile(context))
-          Spacer(flex: Responsive.isDesktop(context) ? 2 : 1),
+        if (!Responsive.isMobile(context)) Spacer(flex: 1),
         Expanded(
           child: SearchField(),
         ),
@@ -41,15 +42,15 @@ class ProfileCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 5),
+      margin: EdgeInsets.only(left: defaultPadding),
       padding: EdgeInsets.symmetric(
-        horizontal: 10,
-        vertical: 5,
+        horizontal: defaultPadding,
+        vertical: defaultPadding / 2,
       ),
       decoration: BoxDecoration(
-          color: Colors.grey,
+          color: secondaryColor,
           borderRadius: const BorderRadius.all(Radius.circular(10)),
-          border: Border.all(color: Colors.white54)),
+          border: Border.all(color: Colors.white10)),
       child: Row(
         children: [
           Image.asset(
@@ -59,7 +60,8 @@ class ProfileCard extends StatelessWidget {
           ),
           if (!Responsive.isMobile(context))
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: defaultPadding / 2),
               child: Text("Profile title and name"),
             ),
           Icon(Icons.keyboard_arrow_down),
@@ -79,7 +81,7 @@ class SearchField extends StatelessWidget {
     return TextField(
       decoration: InputDecoration(
         hintText: "Search",
-        fillColor: Color(0xFF2A2D3E),
+        fillColor: secondaryColor,
         filled: true,
         border: OutlineInputBorder(
           borderSide: BorderSide.none,
@@ -88,18 +90,13 @@ class SearchField extends StatelessWidget {
         suffixIcon: InkWell(
           onTap: () {},
           child: Container(
-            padding: EdgeInsets.all(10),
-            margin: EdgeInsets.symmetric(horizontal: 10),
+            padding: EdgeInsets.all(defaultPadding * 0.75),
+            margin: EdgeInsets.symmetric(horizontal: defaultPadding / 2),
             decoration: BoxDecoration(
-              color: Colors.blue,
-              borderRadius: const BorderRadius.all(
-                Radius.circular(10),
-              ),
+              color: primaryColor,
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
             ),
-            child: Icon(
-              Icons.search,
-              color: Colors.white,
-            ),
+            child: SvgPicture.asset("assets/icons/Search.svg"),
           ),
         ),
       ),

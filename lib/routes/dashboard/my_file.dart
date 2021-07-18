@@ -3,10 +3,10 @@ import 'package:flutter_uikit/constants.dart';
 import 'package:flutter_uikit/model/files.dart';
 import 'package:flutter_uikit/responsive.dart';
 
-import 'file_card.dart';
+import 'comp/file_card.dart';
 
-class MyField extends StatelessWidget {
-  const MyField({
+class MyFile extends StatelessWidget {
+  const MyFile({
     Key? key,
   }) : super(key: key);
 
@@ -20,7 +20,7 @@ class MyField extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'data',
+              'My Files',
               style: Theme.of(context).textTheme.subtitle1,
             ),
             ElevatedButton.icon(

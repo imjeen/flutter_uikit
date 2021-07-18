@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_uikit/constants.dart';
 import 'package:flutter_uikit/layout/main.dart';
 import 'package:flutter_uikit/responsive.dart';
-import 'package:flutter_uikit/routes/dashboard/comp/header.dart';
 
-import 'comp/my_field.dart';
-import 'comp/recent_file_table.dart';
-import 'comp/store_detail.dart';
+import 'header.dart';
+import 'my_file.dart';
+import 'recent_file_table.dart';
+import 'store_detail.dart';
 
 class DashboardRoute extends StatelessWidget {
   const DashboardRoute({Key? key}) : super(key: key);
@@ -29,9 +29,9 @@ class DashboardRoute extends StatelessWidget {
                     flex: 5,
                     child: Column(
                       children: [
-                        MyField(),
+                        MyFile(), // 我的文件
                         SizedBox(height: defaultPadding),
-                        RecentFileTable(),
+                        RecentFileTable(), // 最近的文件
 
                         if (Responsive.isMobile(context))
                           SizedBox(height: defaultPadding),
