@@ -1,0 +1,37 @@
+# GitHub Pages action
+# @see https://github.com/marketplace/actions/github-pages-action
+name: GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # Set a branch name to trigger deployment
+  pull_request:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    steps:
+      - uses: actions/checkout@v2
+
+      # flutter-action
+      # @see https://github.com/marketplace/actions/flutter-action
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
+        with:
+          java-version: "15"
+      - uses: subosito/flutter-action@v1
+        with:
+          flutter-version: "2.2.2"
+      - run: flutter pub get
+      - run: flutter build web # 编译web版
+
+      - name: deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          publish_branch: gh-pages
+          commit_message: ${{ github.event.head_commit.message }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web
